@@ -1,9 +1,12 @@
 package com.trybe.alexandria.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,6 +17,9 @@ public class Publisher {
   private Long id;
   private String name;
   private String address;
+
+  @OneToMany(mappedBy = "publisher")
+  private List<Book> books;
 
   public Publisher() {
   }
@@ -47,5 +53,14 @@ public class Publisher {
     this.address = address;
   }
 
+  public List<Book> getBooks() {
+    return books;
+  }
+
+  public void setBooks(List<Book> books) {
+    this.books = books;
+  }
+
+  
   
 }
